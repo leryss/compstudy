@@ -1,0 +1,4 @@
+                             path data_size continuous_attrs discrete_attrs            j48.err j48.leaves            c50.err c50.leaves
+1 E:\\licenta\\sets\\small\\adult     48842                6              9   0.14176033413181        572  0.135311098826853        128
+2   E:\\licenta\\sets\\small\\car      1728                0              7  0.071290944123314        115 0.0327552986512524         45
+3  E:\\licenta\\sets\\small\\iris       150                4              1 0.0444444444444444          4 0.0444444444444444          4

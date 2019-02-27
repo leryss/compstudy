@@ -1,0 +1,4 @@
+                                 path data_size continuous_attrs discrete_attrs             j48.err j48.leaves             c50.err c50.leaves
+1      E:\\licenta\\sets\\big\\income    199523               13             29  0.0724560201814324        484  0.0724727266652188        113
+2      E:\\licenta\\sets\\big\\forest    581012               54              1  0.0603657976868001      12260  0.0607673948962731      10954
+3 E:\\licenta\\sets\\big\\connections    494021               38              4 0.00468263982133099        698 0.00504024776157674         93
