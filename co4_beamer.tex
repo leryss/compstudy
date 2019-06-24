@@ -1,0 +1,1518 @@
+\documentclass{beamer}
+\setbeamertemplate{navigation symbols}{}
+%\usepackage[utf8]{inputenc}
+\usepackage{ccfonts}%bookman,charter,helvet, chancery, culer, avat, newcent, palatino, pifont, utopia,ccfonts
+\usepackage{mathtools}
+\usepackage{ragged2e}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{graphics}
+\usepackage{algorithmic}
+\usepackage{bbm}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{concmath}
+\usepackage[T1]{fontenc}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{url}
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{myf}{%
+    linecolor=grena,
+    outerlinewidth=1 pt,
+   %roundcorner=20pt,
+    innertopmargin=2pt%\baselineskip,
+    innerbottommargin=2pt%\baselineskip,
+    innerrightmargin=2pt,
+    innerleftmargin=5pt
+    %backgroundcolor=gray!50!white}
+}
+\renewcommand{\algorithmiccomment}[1]{\hfill\eqparbox{COMMENT}{$
+    \backslash\backslash $
+    #1}}
+
+%\useoutertheme{miniframes} % Alternatively: miniframes, infolines, split
+\useinnertheme{circles}
+
+\definecolor{UBCblue}{HTML}{800000} % UBC Blue (primary)
+\definecolor{UBCgrey}{rgb}{0.3686, 0.5255, 0.6235} % UBC Grey (secondary)
+
+\setbeamercolor{palette primary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette secondary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette quaternary}{bg=UBCblue,fg=white}
+\setbeamercolor{structure}{fg=UBCblue} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=UBCblue} % TOC sections
+\setbeamercolor{subsection in head/foot}{bg=UBCgrey,fg=white}% Override palette coloring with secondary
+
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+\bibliographystyle{plain}
+\setbeamerfont{frametitle}{size=\normalsize}
+%\setmainfont{charter}
+\usefonttheme{serif}
+\usetheme{Boadilla}% AnnArbor
+\usecolortheme{crane}
+\usebackgroundtemplate{%
+\tikz\node[opacity=0.15] {\includegraphics[height=\paperheight,width=\paperwidth]{back_CO}};}
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+
+\theoremstyle{plain}
+
+%\definecolor{grena}{HTML}{CD5C5C}
+%\definecolor{grena}{HTML}{DAA520}
+\definecolor{grena}{HTML}{FF8C00}
+%\definecolor{grena}{HTML}{00008B}
+%\definecolor{grena}{HTML}{800000}
+\newcommand{\g}[1]{\textcolor{grena}{\bf #1}}
+\newcommand{\git}[1]{\textcolor{grena}{\it #1}}
+\newtheorem{pro}{\bf \textcolor{blue}{Proposition}}[subsection]
+\newtheorem{lem}{\bf \textcolor{blue}{Lemma}}[subsection]
+\newtheorem{cor}{\bf \textcolor{blue}{Corollary}}[subsection]
+\newtheorem{teo}{\bf \textcolor{blue}{Theorem}}[subsection]
+\newtheorem{deff}{\bf \textcolor{blue}{Definition}}[subsection]
+\newtheorem{ex}{\bf \textcolor{blue}{Example}}[subsection]
+\newtheorem{nota}{\bf \textcolor{blue}{Notation}}[subsection]
+\newtheorem{notas}{\bf \textcolor{blue}{Notations}}[subsection]
+
+\newsavebox\MBox
+\newcommand\Cline[2][red]{{\sbox\MBox{$#2$}%
+  \rlap{\usebox\MBox}\color{#1}\rule[-1.2\dp\MBox]{\wd\MBox}{0.5pt}}}
+\newcommand\mc[1]{\multicolumn{1}{c|}{#1}}
+
+
+\let\un\underline
+\let\sau\curlyvee
+\let\mic\curlyeqprec
+\let\true\displaystyle
+\let\-\setminus
+\let\ov\overline
+\let\<\langle
+\let\>\rangle
+\let\emp\varnothing
+\let\rest\restriction
+\let\join\vee
+\let\meet\wedge
+\let\bigjoin\bigvee
+\let\bigmeet\bigwedge
+\let\minus\smallsetminus
+\let\le\leqslant
+\let\nle\nleqslant
+\let\ge\geqslant
+\let\nge\ngeqslant
+\let\phi\varphi
+\let\pe\preccurlyeq
+\let\sue\subseteq
+\let\su\subset
+\let\nsub\nsubseteq
+\let\sf\blacktriangleleft
+\let\sus\uparrow
+\let\jos\downarrow
+\let\ori\times
+\let\sag\rightarrow
+\let\vid\emptyset
+
+\def\x{{\mathrm x}}
+\def\y{{\mathrm y}}
+\def\z{{\mathrm z}}
+\def\po{\forall \,}
+\def\ins{\inists\,}
+\def\AAA{{\mathbb A}}
+\def\BBB{{\mathbb B}}
+\def\AA{{\bf \mathrm\bf A}}
+\def\BB{{\bf \mathrm\bf B}}
+\def\GG{{\bf \mathrm\bf G}}
+\def\NNN{{\bf \mathrm\bf N}}
+\def\aaa{{\mathbb a}}
+\def\bbb{{\mathbb b}}
+\def\aa{{\bf \mathrm \bf a}}
+\def\bb{{\bf \mathrm \bf b}}
+\def\cc{{\bf \mathrm \bf c}}
+\def\hh{{\bf \mathrm \bf h}}
+\def\unu{{\bf \mathrm \bf 1}}
+
+
+\let\a\alpha
+\let\b\beta
+\def\un{\bf 1}
+\def\A{{\mathcal A}}
+\def\B{{\mathcal B}}
+\def\C{{\mathcal C}}
+\def\CC{{\mathbb C}}
+\let\d\delta
+\let\e\varepsilon
+\def\D{{\mathcal D}}
+\def\DD{{\bf \mathrm\bf D}}
+\def\E{{\mathcal E}}
+\def\EE{{\mathbb E}}
+\def\F{{\mathcal F}}
+\let\ga\gamma
+\def\G{{\mathcal G}}
+\def\H{{\mathcal H}}
+\def\K{{\mathcal K}}
+\def\L{{\mathcal L}}
+\def\III{{\mathcal I}}
+\def\II{{\mathfrak I}}
+\def\N{{\mathcal N}}
+\def\MM{{\bf \mathrm\bf M}}
+\def\M{{\mathcal M}}
+\def\OO{{\mathcal O}}
+\def\P{{\mathcal P}}
+\def\SSS{{\mathcal S}}
+\def\SS{{\mathbf S}}
+\def\Y{{\mathcal Y}}
+\let\O\Omega
+\let\o\omega
+\def\P{{\mathbb P}}
+\def\PP{{\mathcal P}}
+\def\RR{{\mathcal R}}
+\def\Q{{\mathbb Q}}
+\def\QQ{{\mathcal Q}}
+\def\R{{\mathbb R}}
+\def\Z{{\mathbb Z}}
+\def\NN{{\mathbb N}}
+\let\e\epsilon
+\def\I{\^{\i}}
+\def\_{\^{\i}}
+\let\r\rho
+\let\s\sigma
+\let\S\Sigma
+\let\t\tau
+\def\T{{\mathcal T}}
+\def\U{{\mathcal U}}
+\def\V{{\mathcal V}}
+\let\l\lambda
+\let\w\omega
+\def\ss{{\mathbf s}}
+\def\W{{\mathcal W}}
+\def\X{{\mathbf X}}
+\def\x{{\mathbf x}}
+\def\y{{\mathbf y}}
+\def\z{{\mathbf z}}
+\def\zero{{\mathbf 0}}
+\def\v{{\mathbf v}}
+\def\uu{{\mathbf u}}
+\def\si{\c {s}i\ }
+\def\sf{\newline}
+
+
+\begin{document}
+\title{Operations Research - Lecture 4}  
+\author{Olariu E. Florentin}
+\date{October, 2018} 
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}\frametitle{Table of contents}\tableofcontents
+\end{frame}
+
+\section{Simplex Algorithm - Special Situations}
+\begin{frame}\frametitle{Special Situations}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item In the last course we already review some of the issues related with the Simplex method. Part of them are globally linked to the framework of solving an LP problem, but some of them are strictly related to the algorithm.
+
+\item The special situations we review here are:
+
+\begin{itemize}
+\justifying
+
+\item Degeneracy.
+
+\item Unboundedness.
+
+\item Multiple optimal solutions.
+
+\item Cycling.
+
+\item Initial basic feasible solution.
+
+\end{itemize}
+
+\item We will shortly discuss them (even those already studied).
+
+\end{itemize}
+
+\end{frame}
+
+\subsection{Degeneracy}
+\begin{frame}\frametitle{Degeneracy}
+\justifying
+
+Throught this section we will consider a LP problem in standard form
+\begin{mdframed}[style=myf]
+\begin{equation}
+\label{eq14}
+ \begin{array}{rl}
+\textrm{minimize } & z = \cc^T\x, \\
+\textrm{subject to } & \AA\x = \bb,\\
+& \x \ge 0.
+\end{array}
+\end{equation}
+\end{mdframed}
+
+\begin{mdframed}[style=myf]
+\begin{deff}
+%\label{deff11}
+\justifying
+Let $ \x $ basic feasible solution to problem (\ref{eq14}). $ \x $ is said to be \git{degenerate} if $ x_i = \widehat{b}_i = 0 $, for some $ i \in B $.
+\end{deff}
+\end{mdframed}
+
+\begin{itemize}
+\justifying
+
+\item That is \git{degeneracy} occurs when the current basic feasible solution has a basic variable having zero value.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Degeneracy}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item If the current basis is degenerate, it is possible that a zero value basic variable to be chosen to leave the basis.
+
+\item Degeneracy is a sign of redundancy in information; a side effect is that the value of the objective function doesn't change, hence the algorithm doesn't progress.
+
+\item If this issue occurs we may find ourselves in a more difficult situation: cycling, which is  enabled by the existence of degenerate bases.
+
+\end{itemize}
+
+\begin{center}
+\captionof{table}{An Example of Degeneracy.}
+\begin{tabular}{c|cccccc|ccc}	
+& $x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ x_5 $ & $ x_6 $ & {\tiny RHS} & & \\
+\cline{1-8}	
+ $ x_4 $ & 0 & 1.5 & 1 &1 & -0.5 & 0 & 10 & & \\	
+ $ x_1 $ & 1 & 0.5 & 1 & 0 & 0.5 & 0 & 10 & \\	
+$ \Cline[blue]{x_6} $ & 0 & 1 & -1 & 0 & -1 &  1 &  \Cline[blue]{0} & &   \\
+\cline{1-8}	
+$ z $ & 0 & -7 & -2 & 0 & 5 & 0 & 100 \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\subsection{Unboundedness}
+\begin{frame}\frametitle{Unboundedness}
+\justifying
+
+\begin{mdframed}[style=myf]
+\begin{deff}
+%\label{deff11}
+\justifying
+Problem (\ref{eq14}) is said to be \git{unbounded} if doesn't have a finite optimal feasible solution.
+\end{deff}
+\end{mdframed}
+
+\begin{itemize}
+\justifying
+
+\item Unboundedness means that the "optimal" value of objective is $ -\infty $.
+
+\item In Simplex this situation is revealed when we doesn't find a variable to leave.
+
+\end{itemize}
+
+\begin{center}
+\captionof{table}{An Example of Unboundedness.}
+\begin{tabular}{c|ccccc|ccc}	
+& $x_1 $ & $ x_2 $ & $ \Cline[green]{x_3} $ & $ x_4 $ & $ x_5 $ &  {\tiny RHS} & & \\
+\cline{1-8}	
+ $ x_1 $ & 1 & 3 & \Cline[blue]{-2} & 3 & 0 &  1 & & \\	
+ $ x_5 $ & 0 & 1 & \Cline[blue]{0} & -1 & 1  & 5 & \\	
+$ x_3 $ & 0 & 2 & \Cline[blue]{-1} & 0 & 0 &  3 & &   \\
+\cline{1-8}	
+$ z $ & 0 & 2 & \Cline[green]{-2} & 0 & 0 & 12 \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\subsection{Multiple Optimal Solutions}
+\begin{frame}\frametitle{Multiple (Alternative) Optimal Solutions}
+\justifying
+
+\begin{mdframed}[style=myf]
+\begin{deff}
+%\label{deff11}
+\justifying
+Problem (\ref{eq14}) has \git{multiple optimal solutions} if there exist $ \x^1 \ne \x^2 $, both optimal feasible solutions of it.
+\end{deff}
+\end{mdframed}
+
+\begin{itemize}
+\justifying
+
+\item We know already from the last course that, if we have two different optimal feasible solutions, then we have  an infinite number of optimal feasible solutions.
+
+\item In Simplex framework: when we have an optimal basic feasible solution with a non-basic solution having a zero reduced cost.
+
+\item In this situation that non-basic variable can be introduced in the current basis; the next basis will be an optimal one too.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Multiple Optimal Solutions}
+\justifying
+
+\begin{center}
+\captionof{table}{Simplex Example of Alternate Optimal Solutions.}
+\begin{tabular}{c|ccccc|ccc}	
+& $x_1 $ & $ x_2 $ & $ x_3 $ & $ \Cline[green]{x_4} $ & $ x_5 $ &  {\tiny RHS} & & \\
+\cline{1-8}	
+ $ \Cline{x_1} $ & 1 & 3 & 0 & \fbox{3} & 0 &  1 &  {\tiny $ \;\;\Cline{1/3} $} & {\tiny $ \leftarrow $ min} \\	
+ $ x_5 $ & 0 & 1 & 0 & -1 & 1  & 5 & \\	
+$ x_3 $ & 0 & 2 & 1 & 0 & 0 &  3 & &   \\
+\cline{1-8}	
+$ z $ & 0 & 2 & 0 & \Cline[green]{0} & 0 & 12 \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+%\captionof{table}{An Example of Multiple Solutions in Simplex.}
+\begin{tabular}{c|ccccc|ccc}	
+& $x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ x_5 $ &  {\tiny RHS} & & \\
+\cline{1-8}	
+ $ x_4 $ & 1 & 3 & 0 & 3 & 0 &  1 & & \\	
+ $ x_5 $ & 1/3 & 2 & 0 & 0 & 1  & 16/3 & \\	
+$ x_3 $ & 0 & 2 & -1 & 0 & 0 &  3 & &   \\
+\cline{1-8}	
+$ z $ & 0 & 2 & 2 & 0 & 0 & 12 \\
+\end{tabular}
+\end{center}
+
+$ (1\: 0 \: 3 \: 0 \: 5)^T $ and $ (0 \: 0 \: 3 \: 1 \: 16/3)^T $ are both optimal basic feasible solutions.
+
+\end{frame}
+
+
+\subsection{Anticycling Rules}
+\begin{frame}\frametitle{Cycling}
+\justifying
+
+\begin{mdframed}[style=myf]
+\begin{deff}
+%\label{deff11}
+\justifying
+A \git{cycle} occur in the execution of the Simplex algorithm if, after a finite number of iterations, we meet an already computed tableau.
+\end{deff}
+\end{mdframed}
+
+\begin{itemize}
+\justifying
+
+\item Consider the following LP problem
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = -3/4x_1 + 20x_2 - 1/2x_3 + 6 x_4 + 3}  \\
+\textrm{subject to} & \\
+&1/4x_1 - 8x_2 - x_3 + 9x_4 & \le & 0\\
+& 1/2x_1 - 12x_2 - 1/2x_3 + 3x_4  & \le & 0 \\
+& x_3  & \le & 1\\
+& x_1, x_2, \ldots, x_4 & \ge & 0
+\end{array}
+\]
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Cycling}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item In standard form, the problem becomes
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z =  -3/4x_1 + 20x_2 - 1/2x_3 + 6 x_4 + 3}  \\
+\textrm{subject to} & \\
+& 1/4x_1 - 8x_2 - x_3 + 9x_4 + x_5 & = & 0\\
+& 1/2x_1 - 12x_2 - 1/2x_3 + 3x_4 + x_6 & =  & 0 \\
+& x_3 + x_7 & = & 1\\
+& x_1, x_2, \ldots, x_7 & \ge & 0
+\end{array}
+\]
+
+\item We will use the following rules for finding a pivot:
+
+\begin{itemize}
+
+\item the entering variable will be that with the most negative reduced cost;
+
+\item the leaving variable will be that with the smallest index among those that are eligible (for leaving).
+
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Cycling}
+\justifying
+
+\begin{center}
+\captionof{table}{First Simplex Tableau.}
+\begin{tabular}{c|ccccccc|ccc}	
+& $ \Cline[green]{x_1} $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ x_5 $ & $ x_6 $ & $ x_7 $ &{\tiny RHS}  & & \\
+\cline{1-9}	
+ $ \Cline{x_5} $ & \fbox{1/4} & -8 & -1 & 9 & 1 & 0 & 0 & 0 &  {\tiny $ \;\;\Cline{0/0.25} $} & {\tiny $ \leftarrow $ min} \\	
+ $ x_6 $ & 1/2 & -12 & -1/2 & 3 & 0  & 1 & 0 & 0 & {\tiny $ \;\;0/0.5 $} & {\tiny $ \leftarrow $ min}\\	
+$ x_7 $ & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 &  &   \\
+\cline{1-9}	
+$ z $ & \Cline[green]{-3/4} & 20 & -1/2 & 6 & 0 & 0 & 0 & 3 & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Second Simplex Tableau.}
+\begin{tabular}{c|ccccccc|ccc}	
+& $ x_1 $ & $ \Cline[green]{x_2} $ & $ x_3 $ & $ x_4 $ & $ x_5 $ & $ x_6 $ & $ x_7 $ &{\tiny RHS}  && \\
+\cline{1-9}	
+ $ x_1 $ & 1 & -32 & -4 & 36 & 4 & 0 & 0 & 0 &  &  \\	
+ $ \Cline{x_6} $ & 0 & \fbox{4} & 3/2 & -15 & -2  & 1 & 0 & 0 & {\tiny $ \;\;\Cline{0/4} $} & {\tiny $ \leftarrow $ min}\\	
+$ x_7 $ & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 &  &  \\
+\cline{1-9}	
+$ z $ & 0 &  \Cline[green]{-4} & --7/2 & 33 & 3 & 0 & 0 & 3 & \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{Cycling}
+\justifying
+
+\begin{center}
+\captionof{table}{Third Simplex Tableau.}
+\begin{tabular}{c|ccccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ \Cline[green]{x_3} $ & $ x_4 $ & $ x_5 $ & $ x_6 $ & $ x_7 $ &{\tiny RHS}  && \\
+\cline{1-9}	
+ $ \Cline{x_1} $ & 1 & 0 & \fbox{8} & -84 & -12 & 8 & 0 & 0 &   {\tiny $ \;\;\Cline{0/8} $} & {\tiny $ \leftarrow $ min} \\	
+ $ x_2 $ & 0 & 1 & 3/8 & -30/8 & -1/2  & 1/4 & 0 & 0 &  {\tiny $ \;\;0/0.375 $} & {\tiny $ \leftarrow $ min} \\	
+$ x_7 $ & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 &   {\tiny $ \;\;1/1 $ }&  \\
+\cline{1-9}	
+$ z $ & 0 &  0 & \Cline[green]{-2} & 18 & 1 & 1 & 0 & 3 & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Fourth Simplex Tableau.}
+\vspace{-0.5cm}
+\begin{tabular}{c|ccccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ \Cline[green]{x_4} $ & $ x_5 $ & $ x_6 $ & $ x_7 $ &{\tiny RHS}  && \\
+\cline{1-9}	
+ $ x_3 $ & 1/8 & 0 & 1 & -21/2 & -3/2 & 1 & 0 & 0 &  &  \\	
+ $ \Cline{x_2} $ & -3/64 & 1 & 0 &  \fbox{3/16} &1/16 & -1/8 & 0 & 0 &  {\tiny $ \;\;\Cline{0/0.1875} $}  & {\tiny $ \leftarrow $ min} \\	
+$ x_7 $ & -1/8 & 0 & 0 & 21/2& 3/2 & -1 & 1 & 1 &   {\tiny $ \;\;2/21 $ }&  \\
+\cline{1-9}	
+$ z $ & 1/4 &  0 & 0 & \Cline[green]{-3} & -2 & 3 & 0 & 3 & \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{Cycling}
+\justifying
+
+\begin{center}
+\captionof{table}{Fifth Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ \Cline[green]{x_5} $ & $ x_6 $ & $ x_7 $ &{\tiny RHS}  && \\
+\cline{1-9}	
+ $ \Cline{x_3} $ & -5/2 & 56 & 1 & 0 & \fbox{2} & -6 & 0 & 0 &{\tiny $ \;\;\Cline{0/2} $ }   &  {\tiny $ \leftarrow $ min}\\	
+ $ x_4 $ & -1/4 & 16/3 & 0 & 1 & 1/3  & -2/3 & 0 & 0 & {\tiny $ \;\;0/0.33 $ } & {\tiny $ \leftarrow $ min}\\	
+$ x_7 $ & 5/2 & -56 & 0 & 0& -2 & 6 & 1 & 1 &  &  \\
+\cline{1-9}	
+$ z $ & -1/2 &  16 & 0 & 0 & \Cline[green]{-1} & 1 & 0 & 3 & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Sixth Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ x_5 $ & $ \Cline[green]{x_6} $ & $ x_7 $ &{\tiny RHS}  && \\
+\cline{1-9}	
+ $ x_5 $ & -5/4 & 28 & 1/2 & 0 & 1 & -3 & 0 & 0 &  &  \\	
+ $ \Cline{x_4} $ & 1/6 & -4 & -1/6 & 1 & 0  & \fbox{1/3} & 0 & 0 & {\tiny $ \;\;\Cline{0/0.33} $ } & {\tiny $ \leftarrow $ min} \\	
+$ x_7 $ & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 &  \\
+\cline{1-9}	
+$ z $ & -7/4 & 44 & 1/2 & 0 & 0 & \Cline[green]{-2} & 0 & 3 & \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{Cycling}
+\justifying
+
+\begin{center}
+\captionof{table}{Seventh Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccccc|ccc}	
+& $x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ x_5 $ & $ x_6 $ & $ x_7 $ &{\tiny RHS}  & & \\
+\cline{1-9}	
+ $ x_5 $ & 1/4 & -8 & -1 & 9 & 1 & 0 & 0 & 0 & & \\	
+ $ x_6 $ & 1/2 & -12 & -1/2 & 3 & 0  & 1 & 0 & 0 & & \\	
+$ x_7 $ & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 &  &   \\
+\cline{1-9}	
+$ z $ & -3/4 & 20 & -1/2 & 6 & 0 & 0 & 0 & 3 & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item After six pivots we are again in the initial situation, with the same tableau, and same basis.
+
+\item This sequence of pivots can be repeated over and over, and the algorithm never ends.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Anticycling Rules}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Obviously, this situation is induced by the degeneracy - all the intermediate bases are (and must be) degenerate (why?).
+
+\item Although the degeneracy doesn't always imply cycling, without degeneracy we cannot have cycles.
+
+\item The solution to this issue stands in choosing a certain pivoting rule, degeneracy being sometimes unavoidable - as in our example.
+
+\item We will describe below two anticycling rules: lexicographic and Bland's rule.
+
+\end{itemize}
+
+\begin{mdframed}[style=myf]
+\begin{deff}
+%\label{deff11}
+\justifying
+Let $ \uu \ne \v \in \R^n $; $ \uu $ is \git{lexicographically larger} than $ \v $, and write $ \uu >_L \v $, if the first non-zero component of $ \uu - \v $ is positive.
+\end{deff}
+\end{mdframed}
+
+\end{frame}
+
+\begin{frame}\frametitle{Anticycling Rules}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item \git{Lexicographic Pivoting Rule}:
+
+\begin{itemize}
+\justifying
+
+\item Choose an entering variable $ x_j $ as long as its reduced cost is negative; let $ \uu $ be the column corresponding to $ x_j $ (i.e., the $ j $th column).
+
+\item For each $ u_i > 0 $, divide the $ i $th row of the table by $ u_i $, and choose the lexicographically smalest row - this will be the row of the leaving variable.
+
+\end{itemize}
+
+\item \git{Bland's Rule} (smallest index pivoting rule):
+
+\begin{itemize}
+\justifying
+
+\item Find the smallest index $ j $ such that the reduced cost $ \widehat{c}_j $ is negative.
+
+\item Among all the indexes $ i $ for which $ \displaystyle \frac{\widehat{b}_k}{\widehat{a}_{kl}}  = \min{\left\{ \frac{\widehat{b}_h}{\widehat{a}_{hl}} \: : \: \widehat{a}_{hl} > 0 \right\}} $, choose the minimum one - the variable which labels the $ k $th row will be the leaving variable.
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\subsection{Finding Initial Basic Feasible Solutions}
+\begin{frame}\frametitle{Finding Initial Basic Feasible Solutions}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Simplex algorithm iterates from one basic feasible solution to another until an optimal solution is found or until unboundedness is proved.
+
+\item In our examples the initial basic feasible solution is the set formed with all slack variables. This was possible because the original problem has all constraints of the form $ \AA\x \le \bb $ and $ \bb \ge \zero $. 
+
+\item By introducing slack variables the constraints become $ \AA\x + \ss = \bb $. The vector $ (\x, \ss) $ with $ \ss = \bb $ and $ \x = \zero $ is a basic feasible solution (with $ \BB = I $).
+
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Finding Initial Basic Feasible Solutions}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item In general, problems in standard form may have constraints which doesn't contain any slack variable. In this way occur the following question: \git{how to choose an initial basic feasible solution for a problem in general form?}
+
+\item This section give two answers to the above question: the \g{Two Phase Method} and the \g{Big $ M $ Method}.
+
+\item Both these methods rely on solving an auxiliary LP problem; after that we can know if the original problem has or has not an initial basic feasible solution 
+
+\item That is, our methods will tell us if the original problem has or has not feasible solutions at all, since having a feasible solution means having a basic feasible solution also.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Finding Initial Basic Feasible Solutions}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Consider a problem in standard form
+\begin{equation}
+\label{eq15}
+\begin{array}{rl}
+\textrm{minimize } & z = \cc^T\x, \\
+\textrm{subject to } & \AA\x = \bb,\\
+& \x \ge 0. \end{array}
+\end{equation}
+
+\item That is, we have $ \bb \ge \zero $. We introduce a vector of artificial variables $ \y \in \R^m $, that will play the role of slack variables vector, and replace the constraints with
+\begin{equation}
+\label{eq16}
+\begin{array}{rl}
+& \AA\x + \y = \bb,\\
+& \x, \y \ge 0. \end{array}
+\end{equation}
+
+\item Obviously, this will be a distinct problem, and the objective function will be modified in different ways by our methods.
+
+\item Sometimes it is not necessary to add $ m $ artificial variables, since some of the existant variables can play the role of slack variables.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Finding Initial Basic Feasible Solutions - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item We will use the following example
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = 2x_1 + 3x_2}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 & = & 14 \\
+& 2x_1 - 4x_2 & \ge & 2 \\
+& 4x_1 + 3x_2 & \le & 19 \\
+& x_1, x_2 & \ge & 0
+\end{array}
+\]
+
+\item In standard form the problem becomes
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = 2x_1 + 3x_2}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 & = & 14 \\
+& 2x_1 - 4x_2 - x_3 & = & 2 \\
+& 4x_1 + 3x_2 + x_4 & = & 19 \\
+& x_1, x_2, x_3, x_4 & \ge & 0
+\end{array}
+\]
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Finding Initial Basic Feasible Solutions - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item We add artificial variables 
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = 2x_1 + 3x_2}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 + y_1& = & 14 \\
+& 2x_1 - 4x_2 - x_3 + y_2 & = & 2 \\
+& 4x_1 + 3x_2 + x_4 & = & 19 \\
+& x_1, x_2, x_3, x_4, y_1, y_2 & \ge & 0
+\end{array}
+\]
+
+\item Now, we can start the Simplex with the initial base $ \{ y_1, y_2, x_4 \} $; note that $ x_4 $ can play the role of a slack variable, hence, two artificial variables are enough.
+
+\item But this basis doesn't correspond to a basic feasible solution of the original problem, since the artificial variables doesn't belong to the original problem.
+
+\end{itemize}
+
+\end{frame}
+
+\subsubsection{The Two Phase Method}
+\begin{frame}\frametitle{The Two Phase Method}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item In the Two Phase Method, the artificial variables are used to create an auxiliary LP problem - the \git{phase I problem}.
+
+\item This new problem aims only to find a basic feasible solution to the original problem.
+
+\item The objective for the phase I problem is
+\[ \textrm{minimize } \: \:  z' = \sum_j y_j. \]
+
+\item The phase I problem is
+\begin{equation}
+\label{eq17}
+\begin{array}{rl}
+\textrm{minimize } & z' = \sum_jy_j, \\
+\textrm{subject to } & \AA\x + \y = \bb,\\
+& \x, \y \ge 0. \end{array}
+\end{equation}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Let $ z'_* $ be the optimal value of the objective function for the phase I problem; note that this problem has a finite optimum, since it cannot be unbounded.
+
+\item If the original problem is feasible, then $ z'_* = 0 $, otherwise $ z'_* > 0 $. Hence, the original problem is feasible if and only if $ z'_* = 0 $.
+
+\item The phase I problem for our example is
+
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = y_1 + y_2}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 + y_1& = & 14 \\
+& 2x_1 - 4x_2 - x_3 + y_2 & = & 2 \\
+& 4x_1 + 3x_2 + x_4 & = & 19 \\
+& x_1, x_2, x_3, x_4 & \ge & 0
+\end{array}
+\]
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{center}
+
+\begin{tabular}{c|cccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $y_1 $ & $ y_2 $  & && \\
+\cline{1-8}	
+ $ y_1 $ & 3 & 2 & 0 & 0 & 1 & 0 & 14 &   &  \\	
+ $ y_2 $ & 2 & -4 & -1 & 0 & 0  & 1 &  2 &  & \\	
+$ x_4 $ & 4 & 3 & 0 & 1 & 0 & 0 & 19 & & \\
+\cline{1-8}	
+$ z' $ & 0 & 0 & 0 & 0 & 1 & 1 & 0  & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item Obviously this tableau is not in a proper simplex form: we must express $ z' $ only in terms of non-basic variables, by eliminating basic (i.e., artificial) variables from their constraints:
+\[ y_1 = 14 - 3x_1 - 2x_2, y_2 = 2 -2x_1 + 4x_2 + x_3, \]
+\[ z' = y_1 + y_2 = -5x_1 + 2x_2 + x_3 + 16. \]
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{First Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ \Cline[green]{x_1} $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ y_1 $ & 3 & 2 & 0 & 0 & 1 & 0 & 14 &  {\tiny $ \;\;\ 14/3 $} &  \\	
+ $ \Cline{y_2} $ &\fbox{2} & -4 & -1 & 0 & 0  & 1 &  2 & {\tiny $ \;\;\Cline{2/2} $ } & {\tiny $ \leftarrow $ min} \\	
+$ x_4 $ & 4 & 3 & 0 & 1 & 0 & 0 & 19 & {\tiny $ \;\;\ 19/4 $} & \\
+\cline{1-8}	
+$ z' $ & \Cline[green]{-5} & 2 & 1 & 0 & 0& 0 & -16  & & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Second Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ x_1 $ & $ \Cline[green]{x_2} $ & $ x_3 $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ y_1 $ & 0 & 8 & 3/2 & 0 & 1 & -3/2 & 11 &  {\tiny $ \;\;\ 11/8 $} &  \\	
+ $ x_1 $ & 1 & -2 & -1/2 & 0 & 0  & 1/2 &  1 & & \\	
+$ \Cline{x_4} $ & 0 & \fbox{11} & 2 & 1 & 0 & -2 & 15 &  {\tiny $ \;\;\Cline{15/11} $ } & {\tiny $ \leftarrow $ min} \\
+\cline{1-8}	
+$ z' $ & 0 &  \Cline[green]{-8} & -3/2 & 0 & 0& 5/2 & -11  & & \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{Third Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ \Cline[green]{x_3} $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ \Cline{y_1} $ & 0 & 0 & \fbox{1/22} & -8/11 & 1 & -1/22 & 1/11 &  {\tiny $ \;\;\Cline{2} $} &   {\tiny $ \leftarrow $ min}\\	
+ $ x_1 $ & 1 & 0 &  -3/22 & 2/11 & 0  & 3/22 & 41/11 & & \\	
+$ x_2 $ & 0 & 1 & 2/11 & 1/11 & 0 & -2/11 & 15/11 & {\tiny $ \;\;\ 15/2 $} & \\
+\cline{1-8}	
+$ z' $ & 0 & 0 & \Cline[green]{-1/22} & 8/11 & 0& 23/22 & -1/11  & & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Fourth Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ x_3 $ & 0 & 0 & 1 & -16 & 22 & -1 & 2 & & \\	
+ $ x_1 $ & 1 & 0 & 0 & -2 & 3  & 0 & 4 & & \\	
+$ x_2 $ & 0 & 1 & 0 & 3 & -4 & 0 & 1 & & \\
+\cline{1-8}	
+$ z' $ & 0 & 0 & 0 & 0 & 1 & 1 & 0  &&  \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item After three pivots, the curent basis doesn't contain any artificial variable and the objective value is zero, hence we have a basic feasible solution for the original problem. 
+
+\item We can remove the columns corresponding to artificial variables and restate the original objective function:
+\begin{center}
+%\captionof{table}{Fourth Simplex Tableau - Phase I.}
+%\vspace{-0.3cm}
+\begin{tabular}{c|cccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & {\tiny RHS}  && \\
+\cline{1-8} $ x_3 $ & 0 & 0 & 1 & -16 &  2 & & \\	
+ $ x_1 $ & 1 & 0 & 0 & -2 &  4 & & \\	
+$ x_2 $ & 0 & 1 & 0 & 3 &  1 & & \\
+\cline{1-8}	
+$ z $ & 2 & 3 & 0 & 0 &  0  & & \\
+\end{tabular}
+\end{center}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Obviously, this is not a proper form Simplex tableau, since there are some non-zero reduced costs of basic variables; we must replace these variables from their equation:
+\[ x_1 = 2x_4 + 4, x_2 = -3x_4 + 1, \]
+\[ z = 2x_1 + 3x_2 = -5x_4 + 11. \]
+\begin{center}
+\captionof{table}{First Simplex Tableau - Phase II.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & {\tiny RHS}  && \\
+\cline{1-8}	
+ $ x_3 $ & 0 & 0 & 1 & -16 &  2 & & \\	
+ $ x_1 $ & 1 & 0 & 0 & -2 &  4 & & \\	
+$ x_2 $ & 0 & 1 & 0 & 3 &  1 & & \\
+\cline{1-8}	
+$ z $ & 0 & 0 & 0 & -5 &  -11  & & \\
+\end{tabular}
+\end{center}
+
+\item From this point we can use Simplex to solve the original problem - this is \git{phase II} (left as an exercise).
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item After solving Phase I problem, it may happen that one the optimal value is zero, but or more of the artificial variable are basic, in this case we proceed like this:
+
+\begin{itemize}
+\justifying
+
+\item Let the $ i $th basic variable (from the optimal basic feasible solution) be an artificial one, $ x_h $. 
+
+\item We choose an $ \widehat{a}_{ij} \ne 0 $, where $ x_j $ is a non-basic variable from the original problem and pivot such that $ x_h $ leaves and $ x_j $ enters the base. 
+
+\item If we can't find such a variable $ x_j $, then we can remove the $ i $th line (it doesn't influence the original problem) and the $ h $th column.
+
+\item Repeat this steps until there are no more artificial basic variables. 
+
+\item After all that, transform the Simplex tableau to proper form and apply the second phase.
+
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Consider the problem
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = x_1 + x_2}  \\
+\textrm{subject to} & \\
+& 2x_1 + x_2 + x_3 & = & 4 \\
+& x_1 + x_2 + 2x_3 & = & 2 \\
+& x_1, x_2, x_3 & \ge & 0
+\end{array}
+\]
+
+\item We add artificial variables and modify the objective function
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = y_1 + y_2}  \\
+\textrm{subject to} & \\
+& x_1 + x_2 + 2x_3 + y_1 & = & 2 \\
+& 2x_1 + x_2 + x_3 + y_2 & = & 4 \\
+& x_1, x_2, x_3, y_1, y_2 & \ge & 0
+\end{array}
+\]
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{First Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccc|ccc}	
+& $ \Cline[green]{x_1} $ & $ x_2 $ & $ x_3 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-7}
+$ \Cline{y_1} $ & \fbox{1} & 1 & 2 & 1 &  0 & 2 & {\tiny $ \;\;\Cline{2/1} $} & {\tiny $ \leftarrow $ min} \\
+$ y_2 $ & 2 & 1 & 1 & 0  & 1 & 4 & {\tiny $ \;\;4/2 $} & \\
+\cline{1-7}	
+$ z' $ & \Cline[green]{-3}& -2 & -3 & 0 & 0  & -6  & & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Second Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-7}
+$ x_1 $ & 1 & 1 & 2 & 0 &  1 & 2 & & \\
+$ y_2 $ & 0 & \fbox{-1} & -3 & -2  & 1 & 0 & & \\
+\cline{1-7}	
+$ z' $ &0& 1 & 3 & 3 & 0  & 0  & & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item The second tableau is already optimal, but the artificial $ y_2 $ remains in the base; we eliminate and introduce the (original) non-basic variable $ x_2 $ (the pivot is $ -1 \ne 0 $).
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{Third Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-7}
+$ x_1 $ & 1 & 0 & -1 & -2 &  2 & 2 & & \\
+$ x_2 $ & 0 & 1 & 3 & 2  & -1 & 0 & & \\
+\cline{1-7}	
+$ z' $ & 0 & 0 & 0 & 1 & 1  & 0  & & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item We remove the artificial variables and restate the original objective function in terms of the nonbasic variables:
+
+\end{itemize}
+
+\begin{center}
+\captionof{table}{First Simplex Tableau - Phase II.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & {\tiny RHS}  && \\
+\cline{1-5}
+$ x_1 $ & 1 & 0 & -1 & 2 & & \\
+$ x_2 $ & 0 & 1 & 3 &  0 & & \\
+\cline{1-5}	
+$ z' $ & 0 & 0 & -2 &  -2 & & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item Now, one can proceed with the phase II (left as an exercise).
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item We consider another example:
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = x_1 + 2x_2}  \\
+\textrm{subject to} & \\
+& x_1 + x_2 & = & 2 \\
+& 2x_1 + 2x_2 & = & 4 \\
+& x_1, x_2 & \ge & 0
+\end{array}
+\]
+
+\item We add artificial variables and modify the objective function
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = y_1 + y_2}  \\
+\textrm{subject to} & \\
+& x_1 + x_2 + y_1 & = & 2 \\
+& 2x_1 + 2x_2 + y_2 & = & 4 \\
+& x_1, x_2, y_1, y_2 & \ge & 0
+\end{array}
+\]
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{First Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccc|ccc}	
+& $ \Cline[green]{x_1} $ & $ x_2 $ &  $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-6}
+$ \Cline{y_1} $ & \fbox{1} & 1 &1 &   0 & 2 & {\tiny $ \;\;\Cline{2/1} $} & {\tiny $ \leftarrow $ min} \\
+$ y_2 $ & 2 & 2 & 0 &  1 & 4 & {\tiny $ \;\;4/2 $} & \\
+\cline{1-6}	
+$ z' $ & \Cline[green]{-3}& -3 &  0 & 0  & -6  & & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Second Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccc|ccc}	
+& $ x_1 $ & $ x_2 $ &  $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-6}
+$ x_1 $ & 1 & 1 &1 &   0 & 2 & & \\
+$ y_2 $ & 0 & 0 & -2 &  1 & 0 & & \\
+\cline{1-6}	
+$ z' $ & 0& 0&  3 & 0  & 0  & & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item The second tableau is already optimal, but the artificial $ y_2 $ remains in the base. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+
+\begin{itemize}
+\justifying
+
+\item We cannot pivot again in order to eliminate $ y_2 $, since in the second row all coefficients corresponding to non-basic variables from the original problem (namely, $ y_2 $) are zero.
+
+\item In this case we simply remove the row corresponding to variable $ y_2 $.
+
+\item Then, we remove the artificial variables and restate the original objective function.
+
+\end{itemize}
+
+\begin{center}
+\captionof{table}{First Simplex Tableau - Phase II.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cc|ccc}	
+& $ x_1 $ & $ x_2 $ & {\tiny RHS}  && \\
+\cline{1-4}
+$ x_1 $ & 1 & 1 & 2 & & \\
+\cline{1-4}	
+$ z' $ & 0& 1&  -2  & & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item From now on we can go to the phase II (left as an exercise).
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item An example which shows the infeasability of the original problem:
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = -x_1}  \\
+\textrm{subject to} & \\
+& x_1 + x_2 & \ge & 6 \\
+& 2x_1 + 3x_2 & \le & 4 \\
+& x_1, x_2 & \ge & 0
+\end{array}
+\]
+
+\item We convert to the standard form, add artificial variables and modify the objective function
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = y_1 }  \\
+\textrm{subject to} & \\
+& x_1 + x_2 - x_3 + y_1 & = & 6 \\
+& 2x_1 + 3x_2 +x_4 & = & 4 \\
+& x_1, x_2, x_3, x_4, y_1 & \ge & 0
+\end{array}
+\]
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Two Phase Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{First Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccc|ccc}	
+& $ \Cline[green]{x_1} $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ y_1 $  &{\tiny RHS}  && \\
+\cline{1-7}
+$ y_1 $ & 1 & 1 & -3 & 0 &  1 & 6 & {\tiny $ \;\;6/1 $} &  \\
+$ \Cline{x_4} $ & \fbox{2} & 3 & 0 & 1  & 0 & 4 & {\tiny $ \;\;\Cline{4/2} $} & {\tiny $ \leftarrow $ min} \\
+\cline{1-7}	
+$ z' $ & \Cline[green]{-1}& -1 & 1 & 0 & 0  & -6  & & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Second Simplex Tableau - Phase I.}
+\vspace{-0.3cm}
+\begin{tabular}{c|ccccc|ccc}	
+& $ x_1 $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $ y_1 $ & && \\
+\cline{1-7}
+$ y_1 $ & 0 & -1/2 & -3 & -1/2 &  1 & 4 & &  \\
+$ x_1 $ & 1 & 3/2 & 0 & 1/2  & 0 & 2 & & \\
+\cline{1-7}	
+$ z' $ & 0& 1/2 & 1 & 1/2 & 0  & -4 & & \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item The Phase I problem has a non-zero optimum value, hence the original problem in infeasible. We must stop here - there is no Phase II problem.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Big $ M $ Method}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Historically, the big $ M $ method precedes the two phase method; it has been replaced due to the grater practical efficiency of the former.
+
+\item The big $ M $ method ensures that the artificial variables are zero in an (or, equivalently, in any) optimal feasible solution. 
+
+\item That is, it pushes the artificial variables out of the optimal basis, by assigning a penalty cost $ M $ to each such variable in the objective function, where $ M > $ is a big real number.
+
+\item Hence, instead of the original problem, we will solve
+\begin{equation}
+\label{eq18}
+\begin{array}{rl}
+\textrm{minimize } & \displaystyle z' = \cc^t\x + \sum_jMy_j, \\
+\textrm{subject to } & \AA\x + \y = \bb,\\
+& \x, \y \ge 0. \end{array}
+\end{equation}
+
+\end{itemize}
+
+\end{frame}
+
+\subsubsection{Big $ M $ Method}
+\begin{frame}\frametitle{Big $ M $ Method}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Problem (\ref{eq15}) has feasible solutions if and only if there is an optimal feasible solution of (\ref{eq18})  having $ \y = \zero $. 
+
+\item A basic feasible solution for (\ref{eq15}) can be derived from an optimal solution to (\ref{eq18}) in a similar manner to that of two phase method.
+
+\item Obviously, in order to solve (\ref{eq18}), having the artificial variables as the initial basis, we must eliminate all of them from the objective function:
+\[ y_j = b_j - \sum_ia_{ji}x_i, \forall j\]
+\[ z' = \sum_i\left( c_i - M\sum_ja_{ji} \right)x_i + M\sum_jb_j. \]
+
+\item As for the Two Phase method, we don't add artificial variables to those constraints who already have slack variables.
+
+\end{itemize}
+
+\end{frame}
+\begin{frame}\frametitle{Big $ M $ Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item We will use again the following example
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = 2x_1 + 3x_2}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 & = & 14 \\
+& 2x_1 - 4x_2 & \ge & 2 \\
+& 4x_1 + 3x_2 & \le & 19 \\
+& x_1, x_2 & \ge & 0
+\end{array}
+\]
+
+\item In standard form the problem becomes
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = 2x_1 + 3x_2}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 & = & 14 \\
+& 2x_1 - 4x_2 - x_3 & = & 2 \\
+& 4x_1 + 3x_2 + x_4 & = & 19 \\
+& x_1, x_2, x_3, x_4 & \ge & 0
+\end{array}
+\]
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Big $ M $ Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item We add artificial variables 
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = 2x_1 + 3x_2+ M y_1 + My_2}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 + y_1& = & 14 \\
+& 2x_1 - 4x_2 - x_3 + y_2 & = & 2 \\
+& 4x_1 + 3x_2 + x_4 & = & 19 \\
+& x_1, x_2, x_3, x_4, y_1, y_2 & \ge & 0
+\end{array}
+\]
+
+\item Or, after we eliminate $ y_1 $ and $ y_2 $
+\[ \begin{array}{lrcr}
+\textrm{minimize} & \multicolumn{3}{c}{z = (2 - 5M)x_1 + (3 + 2M)x_2+ Mx_3+ 16M}  \\
+\textrm{subject to} & \\
+& 3x_1 + 2x_2 + y_1& = & 14 \\
+& 2x_1 - 4x_2 - x_3 + y_2 & = & 2 \\
+& 4x_1 + 3x_2 + x_4 & = & 19 \\
+& x_1, x_2, x_3, x_4, y_1, y_2 & \ge & 0
+\end{array}
+\]
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Big $ M $ Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{First Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ \Cline[green]{x_1} $ & $ x_2 $ & $ x_3 $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ y_1 $ & 3 & 2 & 0 & 0 & 1 & 0 & 14 & {\tiny $ \;\;14/3 $} & \\	
+ $ \Cline{y_2} $ & \fbox{2} & -4 & -1 & 0 & 0 & 1 & 2 & {\tiny $ \;\;\Cline{1/2} $} & {\tiny $ \leftarrow $ min}  \\	
+$ x_4 $ & 4 & 3 & 0 & 1 & 0 & 0 & 19 & {\tiny $ \;\;19/2 $} & \\
+\cline{1-8}	
+$ z' $ & \Cline[green]{2-5M} & 3+2M & M & 0 & 0 & 0 & -16M  &  &  \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Second Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ x_1 $ & $\Cline[green]{x_2} $ & $ x_3 $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ y_1 $ & 0 & 8 & 3/2 & 0 & 1 & -3/2 & 11 & & \\	
+ $ x_1 $ & 1 & -2 & -1/2 & 0 & 0 & 1/2 & 1 & & \\	
+$ \Cline{x_4} $ & 0 &  \fbox{11} & 2 & 1 & 0 & -2 & 15 & {\tiny $ \;\;\Cline{15/11} $} & {\tiny $ \leftarrow $ min}  \\
+\cline{1-8}	
+$ z' $ & 0 &  \Cline[green]{7 - 8M} &  1 -  3/2M & 0 & 0 & -1 + 5/2M & -2 - 11M  &  &  \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+\begin{frame}\frametitle{Big $ M $ Method - Example}
+\justifying
+
+\begin{center}
+\captionof{table}{Third Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ x_1 $ & $x_2 $ & $ \Cline[green]{x_3} $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ \Cline{y_1} $ & 0 & 0 & \fbox{1/22} & -8/11 & 1 & -1/22 & 1/11 & {\tiny $ \;\;\Cline{2} $} & {\tiny $ \leftarrow $ min}  \\	
+ $ x_1 $ & 1 & 0 & -3/22 & 2/11 & 0 & 3/22 & 41/11 & & \\	
+$ x_2 $ & 0 &  1 & 2/11 & 1/11 & 0 & -2/11 & 15/11 &  {\tiny $ \;\; 15/2 $} & \\
+\cline{1-8}	
+$ z' $ & 0 & 0 & $ \Cline[green]{-\frac{M + 6}{22}} $ & $ \frac{8M - 7}{11} $ & 0 & $ \frac{6 - 23M}{22} $ & $ -\frac{127 + M}{11} $  &  &  \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{Fourth Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccccc|ccc}	
+& $ x_1 $ & $x_2 $ & $ x_3 $ & $ x_4 $ & $y_1 $ & $ y_2 $  &{\tiny RHS}  && \\
+\cline{1-8}	
+ $ x_3 $ & 0 & 0 & 1 & -16 & 22 & -1 & 2 & & \\	
+ $ x_1 $ & 1 & 0 & 0 & -2 & 3 & 0 & 4 & & \\	
+$ x_2 $ & 0 &  1 & 0 & 3 & -4 & 0 & 1 & & \\
+\cline{1-8}	
+$ z' $ & 0 & 0 & 0 & -5 & M + 6 & -12M/11 & -11 &  &  \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{Big $ M $ Method - Example}
+\justifying
+
+\begin{itemize}
+\justifying
+
+\item Although not optimal, the current basis doesn't contain any artificial variable, so this is a basic feasible solution for the original problem.
+
+\item We remove the artificial variable and restate the original objective function: $ z = 2x_1 + 3x_2 = 11 - 5x_4 $.
+
+\end{itemize}
+
+\begin{center}
+\captionof{table}{Modified Simplex Tableau.}
+\vspace{-0.3cm}
+\begin{tabular}{c|cccc|ccc}	
+& $ x_1 $ & $x_2 $ & $ x_3 $ & $ \Cline[green]{x_4} $ & {\tiny RHS}  && \\
+\cline{1-6}	
+ $ x_3 $ & 0 & 0 & 1 & -16 &  2 & & \\	
+ $ x_1 $ & 1 & 0 & 0 & -2 & 4 & & \\	
+$ \Cline{x_2} $ & 0 &  1 & 0 & \fbox{3} & 1 & {\tiny $ \;\;\Cline{1/3} $} & {\tiny $ \leftarrow $ min} \\
+\cline{1-6}	
+$ z' $ & 0 & 0 & 0 & \Cline[green]{-5} & -11 &  &  \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\justifying
+
+\item From this point we can use the simplex algorithm for the original problem ...
+
+\end{itemize}
+
+\end{frame}
+
+\section{Bibliography}
+\begin{frame}\frametitle{Bibliography}
+\begin{thebibliography}{9}
+\justifying
+
+\bibitem[Bertsimas97]{bertsimas97} Bertsimas, D., J. N. Tsitsiklis, \emph{Introduction to Linear Optimization}, Athena Scientific, Belmont, Massachusetts, 1997.
+
+\bibitem[Griva97]{griva09} Griva, I., S. G. Nash, A. Sofer, \emph{Linear and Nonlinear Optimization}, 2nd edition, SIAM, 2009.
+
+%\bibitem[Hillier05]{hillier05} Hillier, F. S., G. J. Lieberman, \emph{Introduction to Operations Research}, McGraw-Hill, 7th edition, 2001.
+
+\bibitem[Kolman97]{kolman97} Kolman, B., R. E. Deck, \emph{Elementary Linear Programming with Applications}, Elsevier Science and Technology Books, 1995.
+
+%\bibitem[Morris94]{morris94} Morris, P., \emph{Introduction to Game Theory}, Springer Verlag, New York, 1994.
+
+\bibitem[Taha07]{taha07} Taha, H. A., \emph{Operations Research: An Introduction}, Prentice Hall International, 8th edition, 2007.
+
+%\bibitem[Zandin01]{maynard01} Zandin, K., (Ed.), \emph{Maynard's Industrial Engineering Handbook}, McGraw-Hill Professional, 5th edition, pp. 11.27-11.44, 2001.
+
+%\bibitem[Yang08]{yang08} Yang, X.-S., \emph{Introduction to Mathematical Optimization - From Linear Programming to Metaheuristics}, Cambridge International Science Publishing, 2008.
+
+\end{thebibliography}
+\end{frame}
+
+\end{document}
